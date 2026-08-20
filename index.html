@@ -1,347 +1,217 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bcustoms LLC | Let Brad Handle It</title>
-  <style>
-        /* Base Styles */
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCustoms | Let Brad Handle It</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+    <style>
         :root {
-            --primary-color: #2b2d42; /* Dark industrial blue/grey */
-            --accent-color: #fca311; /* Construction yellow/orange */
-            --text-light: #ffffff;
-            --text-dark: #333333;
-            --bg-light: #f8f9fa;
+            --accent: #FF6B00;
+            --dark-bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
- 
+
         body {
-            color: var(--text-dark);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f1f5f9;
+            overflow-x: hidden;
         }
- 
-        /* Navigation */
-        header {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+        h1, h2, h3, .logo-font {
+            font-family: 'Outfit', sans-serif;
         }
- 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
         }
-        
-        .logo span {
-            color: var(--accent-color);
+
+        .glass-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background: rgba(255, 107, 0, 0.05);
         }
- 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
- 
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8C00 100%);
         }
- 
-        nav a:hover {
-            color: var(--accent-color);
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
         }
- 
-        .phone-btn {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 0.5rem 1.2rem;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s, transform 0.2s;
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.8);
         }
- 
-        .phone-btn:hover {
-            background-color: #e59400;
-            transform: scale(1.05);
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
- 
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(rgba(43, 45, 66, 0.8), rgba(43, 45, 66, 0.8)), url('https://images.unsplash.com/photo-1504307651254-35680f356f12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--text-light);
-            padding: 0 20px;
-        }
- 
-        #hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
- 
-        #hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-        }
- 
-        .hero-btn {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-            text-transform: uppercase;
-            transition: background 0.3s;
-        }
-        
-        .hero-btn:hover {
-            background-color: #e59400;
-        }
- 
-        /* Services Section */
-        #services {
-            padding: 5rem 5%;
-            background-color: var(--bg-light);
-            text-align: center;
-        }
- 
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 10px auto 0;
-        }
- 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
- 
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            border-bottom: 4px solid var(--accent-color);
-        }
- 
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
- 
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
- 
-        .service-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
- 
-        /* About Section */
-        #about {
-            padding: 5rem 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
- 
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-            max-width: 600px;
-        }
- 
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
- 
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
- 
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            background-color: var(--primary-color);
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: -15px 15px 0px var(--accent-color);
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 4px;
-            display: block;
-        }
- 
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            text-align: center;
-            padding: 3rem 5%;
-        }
- 
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
- 
-        .footer-phone {
-            font-size: 2rem;
-            color: var(--accent-color);
-            font-weight: bold;
-            text-decoration: none;
-        }
- 
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
- 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            #about {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .about-image {
-                box-shadow: 0px 10px 0px var(--accent-color);
-                margin-top: 2rem;
-            }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
- </head>
- <body>
-  <header>
-   <div class="logo">
-    Bcustoms <span>LLC</span>
-   </div>
-   <nav>
-    <ul>
-     <li><a href="#services">Services</a></li>
-     <li><a href="#about">About Brad</a></li>
-    </ul>
-   </nav>
-   <a href="tel:6367951514" class="phone-btn">📞 (636) 795-1514</a>
-  </header>
-  <section id="hero">
-   <h1>Let Brad Handle It.</h1>
-   <p>Your one-call solution for hauling, home repairs, concrete, roofing, and everything in between.</p>
-   <a href="tel:6367951514" class="hero-btn">Get a Free Estimate</a>
-  </section>
-  <section id="services">
-   <h2 class="section-title">What We Do</h2>
-   <div class="services-grid">
-    <div class="service-card">
-     <div class="service-icon">🏗️</div>
-     <h3>Hauling &amp; Junk Removal</h3>
-     <p>Fast, reliable removal of scrap, yard debris, and general junk. If it's in your way, we'll haul it away.</p>
-    </div>
-    <div class="service-card">
-     <div class="service-icon">🔧</div>
-     <h3>Handyman &amp; Mechanic</h3>
-     <p>From household electrical and plumbing fixes to custom mechanic work. "Handyman is what I'm called."</p>
-    </div>
-    <div class="service-card">
-     <div class="service-icon">🏠</div>
-     <h3>Roofing &amp; Concrete</h3>
-     <p>Heavy-duty exterior work including roofing repairs, tear-offs, and custom concrete pouring and finishing.</p>
-    </div>
-    <div class="service-card">
-     <div class="service-icon">🌳</div>
-     <h3>Yard &amp; Tree Services</h3>
-     <p>Complete property maintenance including tree cutting, landscaping, and regular mowing services.</p>
-    </div>
-   </div>
-  </section>
-  <section id="about">
-   <div class="about-text">
-    <h2>About Bcustoms LLC</h2>
-    <p>Locally owned and operated, Bcustoms LLC is built on hard work and doing the job right the first time. I'm Brad, and whether you need an entire property cleaned out, a roof patched up, concrete poured, or just some mechanic work done, I'm your guy.</p>
-    <p>I don't just do one thing—I cover electrical, plumbing, hauling, and everything in between. Stop calling five different contractors for your property needs. Make one call and <strong>let Brad handle it</strong>.</p>
-   </div>
-   <div class="about-image">
-    <!-- Placeholder for Brad's photo (using a generic high-quality builder image, user can swap this out easily) -->
-    <img src="https://images.unsplash.com/photo-1541888081-01132712be13?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Brad - Bcustoms LLC Handyman">
-   </div>
-  </section>
-  <footer>
-   <div class="footer-content">
-    <h2>Ready to get started?</h2>
-    <p>Call or text for a fast, free quote on your next project.</p>
-    <a href="tel:6367951514" class="footer-phone">(636) 795-1514</a>
-   </div>
-   <div class="copyright">© 2026 Bcustoms LLC. All rights reserved.</div>
-  </footer>
- </body>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl font-black tracking-tighter logo-font">
+                    <span class="text-[#FF6B00]">B</span>Customs
+                </span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-slate-400">
+                <a href="#services" class="hover:text-[#FF6B00] transition-colors">Services</a>
+                <a href="#about" class="hover:text-[#FF6B00] transition-colors">About</a>
+                <a href="#contact" class="px-5 py-2 accent-gradient text-white rounded-full hover:opacity-90 transition-all">Contact Brad</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="hero-glow top-[-10%] left-[-10%]"></div>
+        <div class="hero-glow bottom-[-10%] right-[-10%]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-block px-4 py-1 border border-[#FF6B00]/30 rounded-full bg-orange-500/10 text-[#FF6B00] text-xs font-bold uppercase tracking-widest">
+                    Premium Local Services
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black leading-tight">
+                    Let <span class="text-[#FF6B00]">Brad</span> <br>
+                    <span class="text-gradient">Handle It.</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-lg leading-relaxed">
+                    High-end maintenance and custom solutions for your home and property. Professionalism meets precision.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="tel:6367951514" class="px-8 py-4 accent-gradient text-white font-bold rounded-xl text-center shadow-lg shadow-orange-600/20 hover:scale-105 transition-transform">
+                        Book a Service
+                    </a>
+                    <a href="#services" class="px-8 py-4 glass-card text-white font-bold rounded-xl text-center hover:bg-white/10 transition-colors">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <!-- Image Placeholder -->
+                <div class="relative w-80 h-80 md:w-[500px] md:h-[500px] float-anim">
+                    <div class="absolute inset-0 rounded-full border-4 border-[#FF6B00] p-4">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-slate-800 relative">
+                            <div class="absolute inset-0 flex items-center justify-center text-slate-600 text-center p-8 italic">
+                                [ Professional Image of Brad ]
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6958?auto=format&fit=crop&q=80&w=800" alt="Professional Services" class="w-full h-full object-cover opacity-60">
+                        </div>
+                    </div>
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -right-6 glass-card p-6 rounded-2xl shadow-2xl border-l-4 border-l-[#FF6B00]">
+                        <p class="text-xs text-slate-400 uppercase tracking-tighter">Direct Line</p>
+                        <p class="text-xl font-bold text-white">(636) 795-1514</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-black mb-4">Mastery in <span class="text-[#FF6B00]">Every Detail</span></h2>
+            <p class="text-slate-400">From your lawn to property repairs, BCustoms delivers excellence.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Service 1 -->
+            <div class="glass-card p-8 rounded-3xl group">
+                <div class="w-12 h-12 accent-gradient rounded-lg flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 00-1 1v1a2 2 0 11-4 0v-1a1 1 0 00-1-1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Expert Handyman</h3>
+                <p class="text-slate-400 leading-relaxed">Precision repairs, installations, and home improvement tasks handled with a perfectionist's touch.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="glass-card p-8 rounded-3xl group">
+                <div class="w-12 h-12 accent-gradient rounded-lg flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Mowing & Trees</h3>
+                <p class="text-slate-400 leading-relaxed">Premium landscaping and arbor care. Keeping your outdoor spaces pristine and safe year-round.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="glass-card p-8 rounded-3xl group">
+                <div class="w-12 h-12 accent-gradient rounded-lg flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Light to Medium Hauling</h3>
+                <p class="text-slate-400 leading-relaxed">Reliable transport for mid-sized items, furniture moving, and yard debris removal with care and precision.</p>
+            </div>
+
+            <!-- CTA Card (Large) -->
+            <div class="md:col-span-3 accent-gradient p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 mt-4">
+                <div>
+                    <h3 class="text-3xl font-black text-white mb-2">Need a Custom Quote?</h3>
+                    <p class="text-white/80 font-medium">Stop stressing about the to-do list. Let's get it done today.</p>
+                </div>
+                <a href="tel:6367951514" class="bg-white text-[#FF6B00] px-8 py-4 rounded-xl font-black hover:bg-slate-100 transition-colors whitespace-nowrap">
+                    Call (636) 795-1514
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="text-2xl font-black tracking-tighter logo-font">
+                    <span class="text-[#FF6B00]">B</span>Customs
+                </span>
+                <p class="text-slate-500 text-sm mt-2">© 2026 BCustoms LLC. All rights reserved.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-slate-400 text-sm uppercase tracking-widest">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="tel:6367951514" class="text-[#FF6B00] font-bold hover:underline">(636) 795-1514</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
